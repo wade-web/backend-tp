@@ -5,21 +5,21 @@ require('dotenv').config();
 
 const app = express();
 
-// app.use(cors());
+app.use(cors());
 // Configuration CORS pour votre application
-const allowedOrigins = [
-  'https://tp-react-snowy.vercel.app', // Votre frontend Vercel
-  'https://tp-react-snowy.vercel.app/', // Au cas où avec slash
-  'http://localhost:3000', // Dev React
-  'http://localhost:5173' // Dev Vite
-];
+// const allowedOrigins = [
+//   'https://tp-react-snowy.vercel.app', // Votre frontend Vercel
+//   'https://tp-react-snowy.vercel.app/', // Au cas où avec slash
+//   'http://localhost:3000', // Dev React
+//   'http://localhost:5173' // Dev Vite
+// ];
 
-app.use(cors({
-  origin: allowedOrigins,
-  methods: ['GET', 'POST', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Accept'],
-  credentials: false
-}));
+// app.use(cors({
+//   origin: allowedOrigins,
+//   methods: ['GET', 'POST', 'OPTIONS'],
+//   allowedHeaders: ['Content-Type', 'Accept'],
+//   credentials: false
+// }));
 
 // Gestion OPTIONS
 app.options('*', (req, res) => {
@@ -59,6 +59,7 @@ app.listen(PORT, () => {
   console.log(`Serveur Agent démarré sur le port ${PORT}`);
 
 });
+
 
 
 
