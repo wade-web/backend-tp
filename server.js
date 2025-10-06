@@ -39,7 +39,7 @@ app.use(express.json());
 //   console.log(`${new Date().toLocaleTimeString()} - ${req.method} ${req.path} - Origin: ${req.headers.origin || 'none'}`);
 //   next();
 // });
-app.use(express.json());
+// app.use(express.json());
 
 Connexion MongoDB
 mongoose.connect(process.env.MONGODB_URI, {
@@ -59,6 +59,7 @@ app.listen(PORT, () => {
   console.log(`Serveur Agent démarré sur le port ${PORT}`);
 
 });
+
 
 
 
