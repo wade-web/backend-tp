@@ -22,23 +22,23 @@ app.use(cors());
 // }));
 
 // Gestion OPTIONS
-app.options('*', (req, res) => {
-  const origin = req.headers.origin;
-  if (allowedOrigins.includes(origin)) {
-    res.header('Access-Control-Allow-Origin', origin);
-  }
-  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-  res.header('Access-Control-Allow-Headers', 'Content-Type, Accept');
-  res.status(204).send(); // No Content
-});
+// app.options('*', (req, res) => {
+//   const origin = req.headers.origin;
+//   if (allowedOrigins.includes(origin)) {
+//     res.header('Access-Control-Allow-Origin', origin);
+//   }
+//   res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+//   res.header('Access-Control-Allow-Headers', 'Content-Type, Accept');
+//   res.status(204).send(); // No Content
+// });
 
 app.use(express.json());
 
 // Logging simplifié
-app.use((req, res, next) => {
-  console.log(`${new Date().toLocaleTimeString()} - ${req.method} ${req.path} - Origin: ${req.headers.origin || 'none'}`);
-  next();
-});
+// app.use((req, res, next) => {
+//   console.log(`${new Date().toLocaleTimeString()} - ${req.method} ${req.path} - Origin: ${req.headers.origin || 'none'}`);
+//   next();
+// });
 app.use(express.json());
 
 Connexion MongoDB
@@ -59,6 +59,7 @@ app.listen(PORT, () => {
   console.log(`Serveur Agent démarré sur le port ${PORT}`);
 
 });
+
 
 
 
