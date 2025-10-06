@@ -6,10 +6,39 @@ require('dotenv').config();
 const app = express();
 
 // app.use(cors());
+// Configuration CORS pour votre application
+const allowedOrigins = [
+  'https://tp-react-snowy.vercel.app', // Votre frontend Vercel
+  'https://tp-react-snowy.vercel.app/', // Au cas où avec slash
+  'http://localhost:3000', // Dev React
+  'http://localhost:5173' // Dev Vite
+];
+
 app.use(cors({
-  origin: ['https://tp-react-snowy.vercel.app', 'http://localhost:3000', 'http://localhost:5173'],
-  credentials: true
+  origin: allowedOrigins,
+  methods: ['GET', 'POST', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Accept'],
+  credentials: false
 }));
+
+// Gestion OPTIONS
+app.options('*', (req, res) => {
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+    res.header('Access-Control-Allow-Origin', origin);
+  }
+  res.header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Accept');
+  res.status(204).send(); // No Content
+});
+
+app.use(express.json());
+
+// Logging simplifié
+app.use((req, res, next) => {
+  console.log(`${new Date().toLocaleTimeString()} - ${req.method} ${req.path} - Origin: ${req.headers.origin || 'none'}`);
+  next();
+});
 app.use(express.json());
 
 Connexion MongoDB
@@ -30,6 +59,7 @@ app.listen(PORT, () => {
   console.log(`Serveur Agent démarré sur le port ${PORT}`);
 
 });
+
 
 
 
