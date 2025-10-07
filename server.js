@@ -31,7 +31,7 @@ const app = express();
 // Configuration CORS SPÉCIFIQUE
 const allowedOrigins = [
   'https://tp-react-snowy.vercel.app',
-  'https://tp-react-snowy.vercel.app/',
+  'https://tp-react-snowy.vercel.app/login',
   'http://localhost:3000',
   'http://localhost:5173'
 ];
@@ -132,3 +132,4 @@ app.listen(PORT, '0.0.0.0', () => {
   console.log(`🌍 Environnement: ${process.env.NODE_ENV || 'development'}`);
   console.log(`📍 URL: http://localhost:${PORT}`);
 });
+
